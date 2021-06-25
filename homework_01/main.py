@@ -1,5 +1,3 @@
-
-
 def power_numbers(*n):
     list_of_num = []
     for number in n:
@@ -8,12 +6,9 @@ def power_numbers(*n):
     return list_of_num
 
 
-
 ODD = "odd"
 EVEN = "even"
 PRIME = "prime"
-odd_list = []
-even_list = []
 
 
 def is_prime(n):
@@ -24,20 +19,21 @@ def is_prime(n):
         return True
 
 
-def filter_numbers(*some_list):
-    if some_list[-1] == 'odd':
-        for i in some_list[0]:
-            if i % 2 != 0:
-                odd_list.append(i)
-        return odd_list
-    elif some_list[-1] == 'even':
-        for i in some_list[0]:
-            if i % 2 == 0:
-                even_list.append(i)
-        return even_list
-    elif some_list[-1] == 'prime':
-        return list(filter(is_prime, some_list[0]))
+def is_odd(n):
+    return n % 2 != 0
 
+
+def is_even(n):
+    return n % 2 == 0
+
+
+def filter_numbers(first_arg,filter_type):
+    action = {
+        ODD: is_odd,
+        EVEN: is_even,
+        PRIME: is_prime,
+    }[filter_type]
+    return list(filter(action,first_arg))
 
 
 
